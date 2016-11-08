@@ -1,2 +1,0 @@
-class TextUploader < ApplicationRecord
-end

@@ -1,14 +1,42 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>PoliticalSpeechApp</title>
-    <%= csrf_meta_tags %>
+ <%= content_tag(:div, flash[:error], :id => "flash_error") if flash[:error] %>
+  <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
+  <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<%= favicon_link_tag '/charlie.jpg' %>
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
 
-  <body>
-    <%= yield %>
-  </body>
-</html>
+    <%= link_to root_path do %>
+     <%= image_tag "/charlie.jpg", :size => '80x150', :class => "navbar-brand" %>
+     <%end%>
+
+      <%= csrf_meta_tags %>
+      <%= stylesheet_link_tag  'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+      <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    </div>
+
+    <ul class="nav navbar-nav">
+      <li class="active"><%=link_to 'Home', root_path%></li>
+      <li><a href="#">About</a></li>
+      <li><%= link_to 'Speeches All', speeches_path%></li>
+      <li><%= link_to 'New Speeches/Image ', new_speech_path%></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to 'Signup', new_user_registration_path, :class => "glyphicon glyphicon-user"%></li>
+        <li><%= link_to 'Login', user_session_path, :class => "glyphicon glyphicon-log-in"%></li>
+      <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, :class => "glyphicon glyphicon-log-out"%></li>
+    </ul>
+  </div>
+</nav>
+<div class="footer navbar-fixed-bottom">
+  <div class="container text-center">
+  &copy Developed by Rafeeq Wilson
+  </div>
+</div>
+
+<body>
+  <%= yield %>
+</body>
+
+

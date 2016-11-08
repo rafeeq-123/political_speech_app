@@ -1,0 +1,30 @@
+// Place all the styles related to the Speeches controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.btn-lg {
+  padding: 10px 20px;
+  font-weight: bold;
+}
+
+body {
+  background-image: url("seigaiha.png");
+
+}
+
+.border_wrapper{
+  text-overflow: ellipsis;
+  overflow: scroll;
+  padding:10px;
+  border:10px ridge black;
+}
+
+.new_wrapper{
+  width:400px;
+  padding:10px;
+  border:10px ridge black;
+}
+
+
+

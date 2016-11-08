@@ -1,0 +1,18 @@
+<%@speeches.each do |speech| %>
+<strong><%=speech.name%></strong>
+<div class="border_wrapper">
+<% if speech.text_of_uploaded_content.nil? %>
+  <%= "No content available"%>
+<%else%>
+  <%= speech.text_of_uploaded_content%>
+</div>
+<div>
+  <label> Here is the analysis:</label><br>
+  <%= speech.political_stats%>
+
+</div>
+  <%end%>
+<%end%>
+<%= will_paginate @speeches%>
+
+

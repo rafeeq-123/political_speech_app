@@ -1,0 +1,16 @@
+<script src="http://responsivevoice.org/responsivevoice/responsivevoice.js"></script>
+<script src="http://code.jquery.com/jquery-git2.js"></script>
+<h3>Name of Speech:<%=@speech.name%></h3>
+
+<textarea id="text" cols="45" rows="3">
+<%= @speech.text_of_uploaded_content%></textarea>
+</script>
+<div>
+  <%=political_percents%>
+  <!-- cant find a good way to make this user friendly -->
+</div>
+
+<input onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" type="button" value="Play"/>
+
+
+
