@@ -1,0 +1,2 @@
+class TextUploadersController < ApplicationController
+end
