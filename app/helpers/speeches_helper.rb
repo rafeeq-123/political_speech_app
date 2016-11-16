@@ -1,6 +1,11 @@
 module SpeechesHelper
   def political_percents
-    @speech.political_stats
+    binding.pry
+    string_numbers = @speech.political_stats.gsub(/[\s aocservtivenLbClG{}=>""]/ , "").split(",")
+    @liberatian = string_numbers[0].to_f
+    @green = string_numbers[1].to_f
+    @liberal = string_numbers[2].to_f
+    @converative = string_numbers[3].to_f
     # need to find a way to make this nice!
   end
 

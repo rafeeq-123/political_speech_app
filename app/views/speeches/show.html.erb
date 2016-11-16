@@ -6,8 +6,12 @@
 <%= @speech.text_of_uploaded_content%></textarea>
 </script>
 <div>
-  <%=political_percents%>
-  <!-- cant find a good way to make this user friendly -->
+<%political_percents%>
+ <!-- <%=  @liberatian %> <%=@green%> <%=@liberal%> <%=@converative%> -->
+
+<%= line_chart @liberatian.number_to_percentage, colors: ["pink", "#999"] %>
+
+  <!-- do not mix order of variables -->
 </div>
 
 <input onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" type="button" value="Play"/>

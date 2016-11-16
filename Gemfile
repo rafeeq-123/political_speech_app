@@ -15,7 +15,6 @@ gem 'will_paginate', '~> 3.1.0'
 gem 'pdf-reader', '~> 1.4'
 gem 'docx', '~> 0.2.07'
 gem "chartkick"
-
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
