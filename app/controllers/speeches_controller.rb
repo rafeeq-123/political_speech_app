@@ -19,7 +19,10 @@ class SpeechesController < ApplicationController
     elsif speech.content.content_type == "application/pdf"
       reader = PDF::Reader.new(speech.content.current_path)
       reader.pages.each do |page|
-        speech.text_of_uploaded_content = page.text.gsub("\n",'')
+        no_num_of_new_l = page.text.gsub(/[\s\n\b]/ ," ")
+        no_bytes = no_num_of_new_l.force_encoding("BINARY").gsub(/#{0xA5.chr}/," ")
+        speech.text_of_uploaded_content = no_bytes.unpack('A*').to_s.gsub(/\\x[A-F0-9]{2}/,"")[2..-3]
+        speech.text_of_uploaded_content.chomp
         speech.political_stats = Indico.political(speech.text_of_uploaded_content)
         speech.save!
       end
@@ -39,9 +42,7 @@ class SpeechesController < ApplicationController
     @speech = Speech.find(params[:id])
   end
 
-
   #to do list:
-  # => try to use the numbers to make a scale like: https://indico.io/product
   # => deploy to herkou
 
 private
