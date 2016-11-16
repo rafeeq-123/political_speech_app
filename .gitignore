@@ -23,3 +23,6 @@
 #
 public/public/*
 config/secrets.yml
+public/public/uploads/speech/content/*
+public/uploads/*
+public/tmp/*
