@@ -18,7 +18,8 @@ class SpeechesController < ApplicationController
       speech.save!
     elsif speech.content.content_type == "application/pdf"
       reader = PDF::Reader.new(speech.content.current_path)
-      reader.pages.each do |page| speech.text_of_uploaded_content = page.text.gsub("\n",'')
+      reader.pages.each do |page|
+        speech.text_of_uploaded_content = page.text.gsub("\n",'')
         speech.political_stats = Indico.political(speech.text_of_uploaded_content)
         speech.save!
       end
@@ -40,14 +41,8 @@ class SpeechesController < ApplicationController
 
 
   #to do list:
-  # => make website responsive
   # => try to use the numbers to make a scale like: https://indico.io/product
-  # =>  ask trey about my private download file and that files that havent been pushup to master.
-  # =>  ask trey how do I keep them secert? I didnt think about some of the things that I have uploaded.
-  # => fix docx converter
-  # => do I want to add another file type to th create action?
   # => deploy to herkou
-  # => dealing some documents that dont load correctly
 
 private
 
