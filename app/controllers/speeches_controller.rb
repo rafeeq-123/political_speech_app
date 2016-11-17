@@ -23,9 +23,9 @@ class SpeechesController < ApplicationController
         no_bytes = doc_into_text.unpack('A*').to_s.gsub(/\\x[A-F0-9]{2}/,"")[2..-3]
         into_array = no_bytes.split(',')
         speech.text_of_uploaded_content = into_array.reject(&:empty?)
-        #this is still having problems with some doc and empty strings
         speech.political_stats = Indico.political(speech.text_of_uploaded_content.to_s.gsub(/[\s ,\[]""]/ , ""))
         speech.save!
+        #possibly adding the same process into a method and adding it to docx
       end
     # elsif speech.content.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     #     doc = Docx::Document.new(speech.content.current_path)
@@ -45,9 +45,10 @@ class SpeechesController < ApplicationController
 
   #to do list:
   # => deploy to herkou
-
-  #questions
-  # => am I using too mant gems? Could this be one of the reason why my server wont run?
+  # => elasticsearch
+  # => upvotes
+  # => comments?
+  # => ????
 
 private
 

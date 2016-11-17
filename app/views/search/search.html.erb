@@ -1,0 +1,19 @@
+<h1>Speeches Search</h1>
+
+<%= form_for search_path, method: :get do |f| %>
+  <p>
+    <%= f.label "Search for" %>
+    <%= text_field_tag :q, params[:q] %>
+    <%= submit_tag "Go", name: nil %>
+  </p>
+<% end %>
+
+<ul>
+  <% @speeches.each do |speech| %>
+    <li>
+      <h3>
+        <%= link_to speech.name, controller: " speeches", action: "show", id: speech._id%>
+      </h3>
+    </li>
+  <% end %>
+</ul>

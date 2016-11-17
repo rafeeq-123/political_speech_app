@@ -1,5 +1,6 @@
 <%@speeches.each do |speech| %>
 <strong><%=speech.name%></strong>
+<strong><%= "Created on"%>  <%=speech.created_at.strftime("%B, %d, %Y")%></strong>
 <div class="border_wrapper">
 <% if speech.text_of_uploaded_content.nil? %>
   <%= "No content available"%>
@@ -9,7 +10,7 @@
 <div>
   <label> Here is the analysis:</label><br>
   <%= speech.political_stats%>
-
+<!-- need to add something to make the pretty helper method? -->
 </div>
   <%end%>
 <%end%>

@@ -6,4 +6,7 @@ module SpeechesHelper
     @liberal = string_numbers[2].to_f
     @converative = string_numbers[3].to_f
   end
+  # def index_political_percent_helper(speech)
+  #   speech.gsub(/[\s a-zA-Z{}=>""]/ , "").split(",")
+  # end
 end

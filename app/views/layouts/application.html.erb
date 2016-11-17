@@ -20,8 +20,10 @@
     <ul class="nav navbar-nav">
       <li class="active"><%=link_to 'Home', root_path%></li>
       <li><a href="#">About</a></li>
-      <li><%= link_to 'Speeches All', speeches_path%></li>
-      <li><%= link_to 'New Speeches/Image ', new_speech_path%></li>
+      <li><%= link_to 'All Speeches', speeches_path%></li>
+      <li><%= link_to 'Create Speech', new_speech_path%></li>
+      <li><%= link_to 'Search Speeches', search_path%></li>
+
     </ul>
     <ul class="nav navbar-nav navbar-right">
         <li><%= link_to 'Signup', new_user_registration_path, :class => "glyphicon glyphicon-user"%></li>
@@ -35,7 +37,6 @@
   &copy Developed by Rafeeq Wilson
   </div>
 </div>
-
 <body>
   <%= yield %>
 </body>
