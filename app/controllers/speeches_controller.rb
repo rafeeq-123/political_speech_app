@@ -19,11 +19,12 @@ class SpeechesController < ApplicationController
     elsif speech.content.content_type == "application/pdf"
       reader = PDF::Reader.new(speech.content.current_path)
       reader.pages.each do |page|
-        no_num_of_new_l = page.text.gsub(/[\s\n\b]/ ," ")
-        no_bytes = no_num_of_new_l.force_encoding("BINARY").gsub(/#{0xA5.chr}/," ")
-        speech.text_of_uploaded_content = no_bytes.unpack('A*').to_s.gsub(/\\x[A-F0-9]{2}/,"")[2..-3]
-        speech.text_of_uploaded_content.chomp
-        speech.political_stats = Indico.political(speech.text_of_uploaded_content)
+        doc_into_text = page.text.gsub(/[\s\n\b]/ ," ")
+        no_bytes = doc_into_text.unpack('A*').to_s.gsub(/\\x[A-F0-9]{2}/,"")[2..-3]
+        into_array = no_bytes.split(',')
+        speech.text_of_uploaded_content = into_array.reject(&:empty?)
+        #this is still having problems with some doc and empty strings
+        speech.political_stats = Indico.political(speech.text_of_uploaded_content.to_s.gsub(/[\s ,\[]""]/ , ""))
         speech.save!
       end
     # elsif speech.content.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -44,6 +45,9 @@ class SpeechesController < ApplicationController
 
   #to do list:
   # => deploy to herkou
+
+  #questions
+  # => am I using too mant gems? Could this be one of the reason why my server wont run?
 
 private
 
