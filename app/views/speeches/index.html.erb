@@ -9,7 +9,15 @@
 </div>
 <div>
   <label> Here is the analysis:</label><br>
-  <%= speech.political_stats%>
+  <%index_political_percent_helper%>
+
+ <%= line_chart [
+  {name: "liberatian", data: number_to_percentage(@liberatian)},
+  {name: "Green", data: number_to_percentage(@green)},
+  {name: "liberal", data: number_to_percentage(@liberal)},
+  {name: "Conservative", data: number_to_percentage(@converative)}
+
+                              ] %>
 <!-- need to add something to make the pretty helper method? -->
 </div>
   <%end%>

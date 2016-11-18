@@ -1,7 +1,7 @@
 class SpeechesController < ApplicationController
 
   def index
-    @speeches = Speech.paginate(:page => params[:page], :per_page => 1)
+    @speeches = Speech.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 1)
   end
 
   def new
@@ -38,6 +38,13 @@ class SpeechesController < ApplicationController
       end
       redirect_to speech_url(speech.id)
     end
+
+    #to do
+    # => omniauth
+    # => has_many_through
+    # => scope method (most commented)
+    # => fix search with trey
+    # => maybe use this in assesment
 
   def show
     @speech = Speech.find(params[:id])
