@@ -12,14 +12,8 @@
 <input onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" type="button" value="Play"/>
 <%political_percents%>
 
-<%= line_chart [
-  {name: "liberatian", data: number_to_percentage(@liberatian)},
-  {name: "Green", data: number_to_percentage(@green)},
-  {name: "liberal", data: number_to_percentage(@liberal)},
-  {name: "Conservative", data: number_to_percentage(@converative)}
+<%= render partial: 'speeches/graph'%>
 
-                              ] %>
 
-  <!-- do not mix order of variables -->
 
 
