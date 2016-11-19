@@ -12,8 +12,7 @@
   <%index_political_percent_helper%>
 
  <%= render partial: "speeches/graph"%>
-                              <!-- this should be a partial or a helper  -->
-<!-- need to add something to make the pretty helper method? -->
+
 </div>
   <%end%>
 <%end%>
@@ -21,5 +20,8 @@
 <div class="container text-center">
 <%= will_paginate @speeches, renderer: BootstrapPagination::Rails %>
 </div>
+  <%= render partial: "speeches/comments"%>
+
+
 
 
