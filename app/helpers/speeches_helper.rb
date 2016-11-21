@@ -7,10 +7,10 @@ module SpeechesHelper
     @converative = string_numbers[3].to_f
     #I hate this!
   end
+
   def index_political_percent_helper
     @speeches.each do |speech|
-      formated_string = speech.political_stats.gsub(/[\s a-zA-Z{}=>""]/ , "")
-      formated_stats = formated_string.split(',')
+      formated_stats = speech.political_stats.gsub(/[\s a-zA-Z{}=>""]/ , "").split(',')
       @liberatian = formated_stats[0]
       @green = formated_stats[1]
       @liberal = formated_stats[2]
@@ -18,4 +18,8 @@ module SpeechesHelper
     #I hate this even more!!
     end
   end
+
+  # def only_the_numbers
+  #   gsub(/[\s a-zA-Z{}=>""]/ , "").split(',')
+  # end
 end

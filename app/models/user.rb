@@ -5,5 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   validates :email, confirmation: true
   validates :password, length: { in: 6..20, message:'Your password must be between 6 and 20 characters' }
-  has_many :speeches
+  has_many :comments
+  has_many :speeches, through: :comments
 end
