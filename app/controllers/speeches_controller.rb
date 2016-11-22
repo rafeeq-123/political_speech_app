@@ -2,7 +2,7 @@ class SpeechesController < ApplicationController
 
   def index
     @speeches = Speech.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 1)
-    # all_comments
+    @comments = Comment.all
   end
 
   def new
@@ -11,8 +11,8 @@ class SpeechesController < ApplicationController
   end
 
   def create
-    speech_analysis
     binding.pry
+    speech_analysis
     speech = current_user.speeches.create(speech_params)
     if speech.content.content_type == "text/plain"
       ready = File.open(speech.content.current_path)
@@ -30,16 +30,6 @@ class SpeechesController < ApplicationController
         speech.save!
         #possibly adding the same process into a method and adding it to docx
       end
-     # elsif
-        # render 'all_comments'
-        # this line is not going to work forever I am going to need to think of a better way to do this...
-        # respond_to do |format|
-        #   if speech.save
-        #     flash[:notice] = 'Comment added!'
-        #     format.js
-        #     format.html
-        #   end
-        #     format.json { render json: speech.comments.to_json }
 
         # end
     # elsif speech.content.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -57,6 +47,22 @@ class SpeechesController < ApplicationController
   def show
     @speech = Speech.find(params[:id])
   end
+
+  def edit
+    @speech = Speech.find(params[:id])
+  end
+
+  def update
+    @speech = Speech.find(params[:id])
+    @comments = @speech.comments.all
+
+    if @speech.update(speech_params)
+      @speech.save!
+      redirect_to speeches_path
+    else
+      render 'edit'
+    end
+  end
   #to do
   # => omniauth
   # => scope method (most commented)
@@ -69,7 +75,7 @@ class SpeechesController < ApplicationController
 private
 
   def speech_params
-    params.require(:speech).permit(:name, :content, :political_stats, :text_of_uploaded_content, comment_ids:[], comments_attributes: [:title, :comment])
+    params.require(:speech).permit(:name, :content, :political_stats, :text_of_uploaded_content, comments_attributes: [:id, :title, :comment, :_destroy, :current_user])
   end
 
   def speech_analysis
@@ -79,6 +85,7 @@ private
   def all_comments
     @speech = Speech.new
     @comments = @speech.comments.build
+
   end
 
 end
