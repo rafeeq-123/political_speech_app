@@ -1,4 +1,5 @@
 module SpeechesHelper
+
   def political_percents
     string_numbers = @speech.political_stats.gsub(/[\s a-zA-Z{}=>""]/ , "").split(",")
     @liberatian = string_numbers[0].to_f
@@ -18,8 +19,4 @@ module SpeechesHelper
     #I hate this even more!!
     end
   end
-
-  # def only_the_numbers
-  #   gsub(/[\s a-zA-Z{}=>""]/ , "").split(',')
-  # end
 end
