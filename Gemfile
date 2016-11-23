@@ -11,14 +11,14 @@ gem 'will_paginate-bootstrap'
 gem 'pdf-reader', '~> 1.4'
 gem 'docx', '~> 0.2.07'
 gem "chartkick"
-gem 'elasticsearch-model', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
-gem 'elasticsearch-rails', git: 'git://github.com/elasticsearch/elasticsearch-rails.git'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 gem 'jquery-rails'
 gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
+gem 'omniauth-facebook', '~> 3.0'
+gem 'omniauth', '~> 1.3', '>= 1.3.1'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

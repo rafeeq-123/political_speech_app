@@ -1,3 +1,8 @@
+<div class="username">
+<strong> Current User: <%=current_user.email%></strong>
+<%all_users%>
+<strong> Amount of Users: (<%=@amount_of_parsed_users %>), Help our community grow!</strong>
+</div>
 <%@speeches.each do |speech| %>
 <strong><%=speech.name%></strong>
 <strong><%= "Created on"%>  <%=speech.created_at.strftime("%B, %d, %Y")%></strong>
@@ -17,11 +22,17 @@
   <%end%>
 <%end%>
 
+
 <div class="container text-center">
 <%= will_paginate @speeches, renderer: BootstrapPagination::Rails %>
 </div>
 
- <%= render partial: "speeches/comments_form"%>
+<%=link_to "Add Comment",edit_speech_path(@speeches.ids), :class =>"btn btn-primary"%>
+<%=render partial: 'speeches/all_comments'%>
+
+
+
+
 
 
 

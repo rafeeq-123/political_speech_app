@@ -3,15 +3,16 @@ class SpeechesController < ApplicationController
   def index
     @speeches = Speech.reorder('created_at DESC').paginate(:page => params[:page], :per_page => 1)
     @comments = Comment.all
+    @speech = current_user
   end
 
   def new
     @speech = Speech.new
     @comments = @speech.comments.build
+
   end
 
   def create
-    binding.pry
     speech_analysis
     speech = current_user.speeches.create(speech_params)
     if speech.content.content_type == "text/plain"
@@ -30,8 +31,6 @@ class SpeechesController < ApplicationController
         speech.save!
         #possibly adding the same process into a method and adding it to docx
       end
-
-        # end
     # elsif speech.content.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
     #     doc = Docx::Document.new(speech.content.current_path)
     #     doc.paragraphs.each do |page|
@@ -57,18 +56,21 @@ class SpeechesController < ApplicationController
     @comments = @speech.comments.all
 
     if @speech.update(speech_params)
-      @speech.save!
+      @speech.save
       redirect_to speeches_path
     else
       render 'edit'
     end
   end
+
+  def like
+
+
+  end
   #to do
-  # => omniauth
   # => scope method (most commented)
-  # => elasticsearch
   # => has many likes
-  # => fix search with trey
+  # => omniauth
   # => maybe use this in assesment
 
 

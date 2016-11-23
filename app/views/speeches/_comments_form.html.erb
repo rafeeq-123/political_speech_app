@@ -10,16 +10,15 @@
 
     <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
       <div class="card-block">
-        <%= form_for :speech do |f|%>
+        <%= form_for @speech do |f|%>
         <%= f.fields_for :comments do |comment| %>
-        <%= comment.label :title %><br>
+        <%= comment.label :title%><br>
          <%= comment.text_field :title%><br>
         <%= comment.label :comment%><br>
         <%= comment.text_area :comment %><br>
         <%= f.submit "Leave a Comment"%>
-       <%end%>
+        <%end%>
      <%end%>
 
-      </div>
     </div>
   </div>

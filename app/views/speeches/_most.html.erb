@@ -3,23 +3,16 @@
     <div class="card-header" role="tab" id="headingOne">
       <h5 class="mb-0">
         <button data-toggle="collapse" class="btn btn-primary"data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-         All Comments
+         Most Commented
         </button>
       </h5>
     </div>
     <div id="collapseOne" class="collapse in" role="tabpanel" aria-labelledby="headingOne">
-    <% @comments.each_with_index do |comment, index| %>
     <div class="pre-scrollable">
-      <%if comment.comment.nil? || comment.title.nil?%>
-     <h5><%= index + 1%> . <%= "Comment N/A"%></h5>
-      <%else%>
-    <h5><%= index + 1%> . <%= comment.title%></h5>
-    <p>
-      <%=comment.comment%>
-      </p>
-    <%end%>
-  <%end%>
-</div>
+
+
       </div>
     </div>
   </div>
+   </div>
+

@@ -1,6 +1,6 @@
 <script src="http://responsivevoice.org/responsivevoice/responsivevoice.js"></script>
 <script src="http://code.jquery.com/jquery-git2.js"></script>
-<h3>Name of Speech:<%=@speech.name%></h3>
+<h3><%=@speech.name%></h3>
 
 <textarea id="text" cols="45" rows="3">
 <%= @speech.text_of_uploaded_content%></textarea>
@@ -10,12 +10,11 @@
 </div>
 
 <input onclick="responsiveVoice.speak($('#text').val(),$('#voiceselection').val());" type="button" value="Play"/>
-<%political_percents%>
+<script type="text/javascript">
+$("#text").on("click",function(){
+  alert("The text will not be reavulated, please add a comment!");
+});
 
-<%= render partial: 'speeches/graph'%>
+</script>
 
-
-
-
-
-
+<%= render partial: "speeches/comments_form"%>
