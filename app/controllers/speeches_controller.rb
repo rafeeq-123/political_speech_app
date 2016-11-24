@@ -9,7 +9,6 @@ class SpeechesController < ApplicationController
   def new
     @speech = Speech.new
     @comments = @speech.comments.build
-
   end
 
   def create
@@ -63,17 +62,6 @@ class SpeechesController < ApplicationController
     end
   end
 
-  def like
-
-
-  end
-  #to do
-  # => scope method (most commented)
-  # => has many likes
-  # => omniauth
-  # => maybe use this in assesment
-
-
 private
 
   def speech_params
@@ -87,7 +75,6 @@ private
   def all_comments
     @speech = Speech.new
     @comments = @speech.comments.build
-
   end
 
 end

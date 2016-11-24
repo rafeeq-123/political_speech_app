@@ -1,7 +1,7 @@
 <div class="username">
 <strong> Current User: <%=current_user.email%></strong>
 <%all_users%>
-<strong> Amount of Users: (<%=@amount_of_parsed_users %>), Help our community grow!</strong>
+<strong> Amount of Active Users: (<%=@amount_of_parsed_users %>), Help our community grow!</strong>
 </div>
 <%@speeches.each do |speech| %>
 <strong><%=speech.name%></strong>
