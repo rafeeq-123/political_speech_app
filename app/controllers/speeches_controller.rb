@@ -12,7 +12,6 @@ class SpeechesController < ApplicationController
   end
 
   def create
-    authenticate
     speech_analysis
     speech = current_user.speeches.create(speech_params)
     if speech.content.content_type == "text/plain"
@@ -73,11 +72,11 @@ private
     Indico.api_key = Rails.application.secrets.indico_api
   end
 
-  def authenticate
-    authenticate_or_request_with_http_basic do |indico_api|
-     indico_api = Rails.application.secrets.indico_api
-   end
- end
+ #  def authenticate
+ #    authenticate_or_request_with_http_basic do |indico_api|
+ #     indico_api = Rails.application.secrets.indico_api
+ #   end
+ # end
 
   def all_comments
     @speech = Speech.new
