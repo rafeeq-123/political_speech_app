@@ -74,9 +74,8 @@ private
   end
 
   def authenticate
-    binding.pry
-    authenticate_or_request_with_http_basic do |username, password|
-     Indico.api_key = Rails.application.secrets.indico_api
+    authenticate_or_request_with_http_basic do |indico_api|
+     indico_api = Rails.application.secrets.indico_api
    end
  end
 

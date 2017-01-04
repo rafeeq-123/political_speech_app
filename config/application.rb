@@ -12,6 +12,5 @@ module PoliticalSpeechApp
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
     config.secret_key_base = 'blipblapblup'
-    config.indico_api = 'blipblapblup'
   end
 end
