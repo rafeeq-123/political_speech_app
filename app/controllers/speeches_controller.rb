@@ -18,7 +18,7 @@ class SpeechesController < ApplicationController
       ready = File.open(speech.content.current_path)
       speech.text_of_uploaded_content = ready.read
       speech.political_stats = Indico.political(speech.text_of_uploaded_content)
-      speech.save!
+      speech.save
     elsif speech.content.content_type == "application/pdf"
       reader = PDF::Reader.new(speech.content.current_path)
       reader.pages.each do |page|
@@ -27,7 +27,7 @@ class SpeechesController < ApplicationController
         into_array = no_bytes.split(',')
         speech.text_of_uploaded_content = into_array.reject(&:empty?)
         speech.political_stats = Indico.political(speech.text_of_uploaded_content.to_s.gsub(/[\s,\""]/ , ""))
-        speech.save!
+        speech.save
         #possibly adding the same process into a method and adding it to docx
       end
     # elsif speech.content.content_type == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
@@ -58,7 +58,7 @@ class SpeechesController < ApplicationController
       @speech.save
       redirect_to speeches_path
     else
-      render 'edit'
+      render "edit"
     end
   end
 
