@@ -26,5 +26,3 @@ config/secrets.yml
 public/public/uploads/speech/content/*
 public/uploads/*
 public/tmp/*
-config/initializers/devise.rb/*
-config/initializers/devise.rb
