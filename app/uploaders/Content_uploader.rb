@@ -43,13 +43,13 @@ class ContentUploader < CarrierWave::Uploader::Base
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:
-    def extension_whitelist
-      %w(pdf docx txt)
-    end
+  def extension_whitelist
+    %w(pdf docx txt)
+  end
 
-    def extension_blacklist
-      %w(jpg png jpeg html cvs)
-    end
+  def extension_blacklist
+    %w(jpg png jpeg html cvs)
+  end
 
 
 end
