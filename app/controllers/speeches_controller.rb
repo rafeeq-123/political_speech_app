@@ -26,7 +26,7 @@ class SpeechesController < ApplicationController
         no_bytes = doc_into_text.unpack('A*').to_s.gsub(/\\x[A-F0-9]{2}/,"")[2..-3]
         into_array = no_bytes.split(',')
         speech.text_of_uploaded_content = into_array.reject(&:empty?)
-        speech.political_stats = Indico.political(speech.text_of_uploaded_content.to_s.gsub(/[\s ,\[]""]/ , ""))
+        speech.political_stats = Indico.political(speech.text_of_uploaded_content.to_s.gsub(/[\s,\""]/ , ""))
         speech.save!
         #possibly adding the same process into a method and adding it to docx
       end
