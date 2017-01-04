@@ -6,5 +6,4 @@ Rails.application.routes.draw do
     root 'users#index'
     get 'search', to: 'search#search'
     get 'speeches', to: 'speeches#all_comments'
-    #going to use cancan for nested resources
 end
